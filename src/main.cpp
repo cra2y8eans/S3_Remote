@@ -7,10 +7,10 @@
  * 各功能模块通过队列通信，实现模块间解耦
  */
 
+#include "ESP_NOW/sendData.h"
 #include "button/button.h"
 #include "buzzer/buzzer.h"
 #include "oled/oled.h"
-#include "ESP_NOW/sendData.h"
 #include <Arduino.h>
 
 #define ADC_RESOLUTION 12
@@ -18,11 +18,11 @@
 void setup() {
   Serial.begin(115200);
   analogReadResolution(ADC_RESOLUTION);
-  button_init();
-  buzzer_init();
   oled_init();
   sendData_init();
-  // vTaskDelete(NULL);
+  buzzer_init();
+  button_init();
+  vTaskDelete(NULL);
 }
 void loop() {
 }
